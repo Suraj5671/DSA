@@ -1,0 +1,62 @@
+#include <bits/stdc++.h>
+using namespace std;
+vector<vector<int>> createArray(int r, int c)
+{
+  vector<vector<int>>vv;
+  for(int i=0; i<r; i++)
+  {
+    vector<int>v;
+    for(int j=0; j<c; j++)
+    {
+       v.push_back((rand() % 100));
+    }
+    vv.push_back(v);
+  }
+  return vv;
+}
+void sortCol(vector<vector<int>>&vv, int colInd)
+{
+  int r=vv.size();
+  int c=vv[0].size();
+  vector<int>t;
+  for(int i=0; i<r; i++)
+  {
+    t.push_back(vv[i][colInd-1]);
+  }
+  sort(t.begin(),t.end());
+  for(int i=0; i<r; i++)
+  {
+    vv[i][colInd-1]=t[i];
+  }
+}
+int main() 
+{
+    int r; int c;
+   // cout<<"Enter Matrix size :";
+    cin>>r>>c;
+    vector<vector<int>>vv=createArray(r,c);
+    for(auto z:vv)
+    {
+      for(auto y:z)
+      cout<<y<<" ";
+      cout<<endl;
+    }
+    int x;
+    cin>>x;
+    if(x<=0 || x>c)
+    {
+       cout<<"Invalid Column Number"<<endl;
+    }
+    else
+    {
+      cout<<"2nd problem"<<endl;
+      sortCol(vv,x);
+      for(auto x:vv)
+      {
+        for(auto y:x)
+        cout<<y<<" ";
+        cout<<endl;
+      }
+    }
+    return 0;
+}
